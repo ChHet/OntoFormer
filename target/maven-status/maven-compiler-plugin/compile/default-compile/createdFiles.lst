@@ -1,0 +1,11 @@
+org/OntoFormer/Graveyard.class
+org/OntoFormer/RDFModel.class
+org/OntoFormer/FormGraph$SectionNode.class
+org/OntoFormer/FormGraph$Node.class
+org/OntoFormer/FormGraph$Relation.class
+org/OntoFormer/Main.class
+org/OntoFormer/FileManagement.class
+org/OntoFormer/InstallationTask.class
+org/OntoFormer/FormGraph$SelectOptionsNode.class
+org/OntoFormer/FormGraph.class
+org/OntoFormer/FormGraph$InputFieldNode.class

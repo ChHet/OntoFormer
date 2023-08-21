@@ -1,0 +1,70 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.1="http://www.w3.org/2001/XMLSchema#">
+  <j.0:hasFood rdf:about="http://example.com/MealCourse/6#has_attribute">
+    <rdf:type rdf:resource="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#locatedIn"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#hasDrink"/>
+  </j.0:hasFood>
+  <j.0:MealCourse rdf:about="http://example.com/MealCourse/6#MealCourse">
+    <rdf:predicate>
+      <j.0:Meal rdf:about="http://example.com/MealCourse/6#dish_section">
+        <rdf:predicate>
+          <j.0:EdibleThing rdf:about="http://example.com/MealCourse/6#dish_side">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Garlic_bread"/>
+          </j.0:EdibleThing>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.0:EdibleThing rdf:about="http://example.com/MealCourse/6#dish_main_ingredient">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#parmesan"/>
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#cesar_dressing"/>
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Romaine_lettuce"/>
+          </j.0:EdibleThing>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.1:string rdf:about="http://example.com/MealCourse/6#dish_tastes">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Herbaceous"/>
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Rich"/>
+          </j.1:string>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.1:string rdf:about="http://example.com/MealCourse/6#dish_name">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Cesar_Salad"/>
+          </j.1:string>
+        </rdf:predicate>
+      </j.0:Meal>
+    </rdf:predicate>
+    <rdf:predicate>
+      <j.0:Wine rdf:about="http://example.com/MealCourse/6#wine_section">
+        <rdf:predicate>
+          <j.0:WineTaste rdf:about="http://example.com/MealCourse/6#wine_tastes">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Sweet"/>
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Fruity"/>
+          </j.0:WineTaste>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.1:decimal rdf:about="http://example.com/MealCourse/6#wine_alcohol">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#12"/>
+          </j.1:decimal>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.0:Region rdf:about="http://example.com/MealCourse/6#wine_region">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#France"/>
+          </j.0:Region>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.1:string rdf:about="http://example.com/MealCourse/6#wine_type">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Rosé"/>
+          </j.1:string>
+        </rdf:predicate>
+        <rdf:predicate>
+          <j.1:string rdf:about="http://example.com/MealCourse/6#wine_name">
+            <rdf:value rdf:resource="http://example.com/MealCourse/6#Rosé_d&apos;Anjou"/>
+          </j.1:string>
+        </rdf:predicate>
+      </j.0:Wine>
+    </rdf:predicate>
+  </j.0:MealCourse>
+</rdf:RDF>

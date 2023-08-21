@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Meal Course Form</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<h1>Meal Course Form</h1>
+<form id="form">
+<fieldset data-type="identification">
+<legend>ID</legend>
+<label for="ident1">baseURI</label><br>
+<input type="text" id="ident1" name="ident1" value="" data-type="identification"><br><br>
+<label for="ident2">Course Number</label><br>
+<input type="text" id="ident2" name="ident2" value="" data-type="identification"><br><br>
+</fieldset>
+<fieldset data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Wine">
+<legend>Wine</legend>
+<label for="wine_name">Name:</label><br>
+<input type="text" id="wine_name" name="wine_name" value="" data-type="http://www.w3.org/2001/XMLSchema#string"><br><br>
+<label for="wine_type">Type:</label><br>
+<select id="wine_type" name="wine_type" data-type="http://www.w3.org/2001/XMLSchema#string">
+<option value=""></option>
+<option value="Red Wine">Red Wine</option>
+<option value="White Wine">White Wine</option>
+<option value="Rosé">Rosé</option>
+<option value="Fortified Wine">Fortified Wine</option>
+<option value="Sparkling Wine">Sparkling Wine</option>
+</select><br><br>
+<label for="wine_region">Region of Origin:</label><br>
+<input type="text" id="wine_region" name="wine_region" value="" data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Region"><br><br>
+<label for="wine_alcohol">Degree of Alcohol:</label><br>
+<input type="number" id="wine_alcohol" name="wine_alcohol" value="" data-type="http://www.w3.org/2001/XMLSchema#decimal"><br><br>
+<label for="wine_tastes">Tastes:</label><br>
+<select id="wine_tastes" name="wine_tastes" multiple data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#WineTaste">
+<option value=""></option>
+<option value="Fruity">Fruity</option>
+<option value="Dry">Dry</option>
+<option value="Sweet">Sweet</option>
+<option value="Tart">Tart</option>
+<option value="Tannic">Tannic</option>
+<option value="Oaky">Oaky</option>
+<option value="Earthy">Earthy</option>
+<option value="Spicy">Spicy</option>
+<option value="Floral">Floral</option>
+<option value="Herbaceous">Herbaceous</option>
+</select><br><br>
+</fieldset>
+<fieldset data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Meal">
+<legend>Dish</legend>
+<label for="dish_name">Name:</label><br>
+<input type="text" id="dish_name" name="dish_name" value="" data-type="http://www.w3.org/2001/XMLSchema#string"><br><br>
+<label for="dish_tastes">Tastes:</label><br>
+<select id="dish_tastes" name="dish_tastes" multiple data-type="http://www.w3.org/2001/XMLSchema#string">
+<option value=""></option>
+<option value="Sweet">Sweet</option>
+<option value="Savory">Savory</option>
+<option value="Spicy">Spicy</option>
+<option value="Sour">Sour</option>
+<option value="Salty">Salty</option>
+<option value="Bitter">Bitter</option>
+<option value="Tangy">Tangy</option>
+<option value="Smoky">Smoky</option>
+<option value="Rich">Rich</option>
+<option value="Herbaceous">Herbaceous</option>
+</select><br><br>
+<label for="dish_main_ingredient">Main Ingredient:</label><br>
+<input type="text" id="dish_main_ingredient" name="dish_main_ingredient" value="" data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#EdibleThing"><br><br>
+<label for="dish_side">Side:</label><br>
+<input type="text" id="dish_side" name="dish_side" value="" data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#EdibleThing"><br><br>
+</fieldset>
+<label for="MealCourse"></label><br>
+<input type="hidden" id="MealCourse" name="MealCourse" value="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#MealCourse" data-type="http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#MealCourse"><br><br>
+<button type="button" onclick="handleSubmit()">Submit</button>
+</form>
+<script>
+function handleSubmit() {
+var form = document.getElementById("form");
+var formData = new FormData(form);
+var content = '';
+var identification = ''; 
+for (var pair of formData.entries()) {
+var inputField = document.getElementById(pair[0]);
+var dataTypeAttribute = inputField.getAttribute('data-type');
+if (dataTypeAttribute === 'identification') {
+identification += pair[1];
+if (!identification.endsWith('/')) {
+identification += '/';
+}
+}
+}
+if (identification.endsWith('/')) {
+identification = identification.substring(0, identification.length - 1) + '#';
+}
+content += '"ns" "is" "' + identification + '"\n';
+for (var pair of formData.entries()) {
+var inputField = document.getElementById(pair[0]);
+if (inputField && inputField.type !== 'hidden') {
+var values = pair[1].split(',');
+for (var i = 0; i < values.length; i++) {
+dataTypeAttribute = document.getElementById(pair[0]).getAttribute('data-type'); 
+if (dataTypeAttribute !== 'identification') {
+content += '"' + pair[0] + '" "has_value" "' + values[i].trim() + '"\n';
+}
+}
+}
+}
+content += `"MealCourse" "has_attribute" "wine_section"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#hasDrink"` + "\n";
+content += `"wine_section" "has_attribute" "wine_name"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"wine_section" "has_attribute" "wine_type"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"wine_section" "has_attribute" "wine_region"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#locatedIn"` + "\n";
+content += `"wine_section" "has_attribute" "wine_alcohol"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"wine_section" "has_attribute" "wine_tastes"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"MealCourse" "has_attribute" "dish_section"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#hasFood"` + "\n";
+content += `"dish_section" "has_attribute" "dish_name"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"dish_section" "has_attribute" "dish_tastes"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"dish_section" "has_attribute" "dish_main_ingredient"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"dish_section" "has_attribute" "dish_side"` + "\n";
+content += `"has_attribute" "of_type" "http://www.w3.org/2000/01/rdf-schema#Property"` + "\n";
+content += `"wine_section" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Wine"\n`;
+content += `"wine_name" "of_type" "http://www.w3.org/2001/XMLSchema#string"\n`;
+content += `"wine_type" "of_type" "http://www.w3.org/2001/XMLSchema#string"\n`;
+content += `"wine_region" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Region"\n`;
+content += `"wine_alcohol" "of_type" "http://www.w3.org/2001/XMLSchema#decimal"\n`;
+content += `"wine_tastes" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#WineTaste"\n`;
+content += `"dish_section" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Meal"\n`;
+content += `"dish_name" "of_type" "http://www.w3.org/2001/XMLSchema#string"\n`;
+content += `"dish_tastes" "of_type" "http://www.w3.org/2001/XMLSchema#string"\n`;
+content += `"dish_main_ingredient" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#EdibleThing"\n`;
+content += `"dish_side" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#EdibleThing"\n`;
+content += `"MealCourse" "of_type" "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#MealCourse"\n`;
+var blob = new Blob([content], { type: "text/plain" });
+var anchor = document.createElement("a");
+anchor.download = "Meal_Course_Form.txt";
+anchor.href = URL.createObjectURL(blob);
+anchor.click();
+}
+</script>
+</body>
+</html>
