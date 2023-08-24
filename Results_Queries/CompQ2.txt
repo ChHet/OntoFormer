@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+| mealCourse                                    | food                                           | wine                                               |
+=======================================================================================================================================================
+| <http://example.com/MealCourse/11#MealCourse> | <http://example.com/MealCourse/11#Green_salad> | <http://example.com/MealCourse/11#Chateau_Margaux> |
+| <http://example.com/MealCourse/2#MealCourse>  | <http://example.com/MealCourse/2#Green_salad>  | <http://example.com/MealCourse/2#Chardonnay>       |
+| <http://example.com/MealCourse/12#MealCourse> | <http://example.com/MealCourse/12#Green_salad> | <http://example.com/MealCourse/12#Rosé_d'Anjou>    |
+| <http://example.com/MealCourse/21#MealCourse> | <http://example.com/MealCourse/21#Green_salad> | <http://example.com/MealCourse/21#Prosecco>        |
+| <http://example.com/MealCourse/22#MealCourse> | <http://example.com/MealCourse/22#Green_salad> | <http://example.com/MealCourse/22#Riesling>        |
+| <http://example.com/MealCourse/17#MealCourse> | <http://example.com/MealCourse/17#Green_salad> | <http://example.com/MealCourse/17#Chateau_Margaux> |
+| <http://example.com/MealCourse/1#MealCourse>  | <http://example.com/MealCourse/1#Green_salad>  | <http://example.com/MealCourse/1#Burgundy>         |
+| <http://example.com/MealCourse/5#MealCourse>  | <http://example.com/MealCourse/5#Green_salad>  | <http://example.com/MealCourse/5#Chateau_Margaux>  |
+| <http://example.com/MealCourse/25#MealCourse> | <http://example.com/MealCourse/25#Green_salad> | <http://example.com/MealCourse/25#Burgundy>        |
+| <http://example.com/MealCourse/15#MealCourse> | <http://example.com/MealCourse/15#Green_salad> | <http://example.com/MealCourse/15#Prosecco>        |
+-------------------------------------------------------------------------------------------------------------------------------------------------------
